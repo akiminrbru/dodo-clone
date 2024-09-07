@@ -14,7 +14,13 @@ interface Props {
 	listClassName?: string;
 }
 
-export const ProductsGroupList: React.FC<Props> = ({ title, items, categoryId, listClassName, className }) => {
+export const ProductsGroupList: React.FC<Props> = ({
+	title,
+	items,
+	categoryId,
+	listClassName,
+	className,
+}) => {
 	const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
 	const intersectionRef = useRef(null);
 	const intersection = useIntersection(intersectionRef, {
@@ -32,7 +38,13 @@ export const ProductsGroupList: React.FC<Props> = ({ title, items, categoryId, l
 			<Title text={title} size="lg" className="font-extrabold mb-6" />
 			<div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
 				{items.map((product, i) => (
-					<ProductCard key={product.id} id={product.id} name={product.name} imageUrl={product.imageUrl} price={product.items[0].price} />
+					<ProductCard
+						key={product.id}
+						id={product.id}
+						name={product.name}
+						imageUrl={product.imageUrl}
+						price={product.items[0].price}
+					/>
 				))}
 			</div>
 		</div>
